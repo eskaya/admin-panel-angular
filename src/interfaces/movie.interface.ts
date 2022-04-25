@@ -5,4 +5,5 @@ export interface MovieInterface {
     category: string;
     year: number;
     country: string;
+    director_id: string;
 }

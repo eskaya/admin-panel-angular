@@ -38,6 +38,7 @@ export class MovieComponent implements OnInit {
                 Validators.min(1900),
             ]) ],
             country   : [ '', Validators.required ],
+            director_id: ['', Validators.required],
         });
     }
     
