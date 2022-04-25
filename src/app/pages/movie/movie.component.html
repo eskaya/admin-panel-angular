@@ -1,0 +1,102 @@
+<div class="row">
+	<div class="col-md-12">
+		<nb-card [formGroup]="movieForm">
+			<nb-card-header>
+				<p>Movie Form</p>
+				<div class="button-wrapper">
+					<button
+						class="mr-3"
+						nbButton
+						status="primary"
+						(click)="clickSubmitButton()">
+						Save
+					</button>
+					<button
+						nbButton
+						status="success">
+						List
+					</button>
+				</div>
+			</nb-card-header>
+			<nb-card-body>
+				<div class="row mb-4">
+					<!-- Movie Title Input -->
+					<div class="col-md-4 col-sm-12">
+						<label for="movie_title">Movie Title</label>
+						<input
+							formControlName="title"
+							type="text"
+							id="movie_title"
+							nbInput
+							fullWidth
+							status="basic"
+							placeholder="Movie Title">
+					</div>
+					<!-- E: Movie Title Input -->
+
+					<!-- Category Input -->
+					<div class="col-md-4 col-sm-12">
+						<label for="category">Movie Category</label>
+						<nb-select
+							formControlName="category"
+							id="category"
+							placeholder="Select Movie Category"
+							fullWidth>
+							<nb-option value="action">Action</nb-option>
+							<nb-option value="romanticComedy">Romantic Comedy</nb-option>
+							<nb-option value="fear">Fear</nb-option>
+							<nb-option value="scienceFiction">Science Fiction</nb-option>
+							<nb-option value="animation">Animation</nb-option>
+							<nb-option value="documentary">Documentary</nb-option>
+						</nb-select>
+					</div>
+					<!-- E: Category Input -->
+
+					<!-- IMDB_SCORE Input -->
+					<div class="col-md-4 col-sm-12">
+						<label for="imdb_score">Imdb Score</label>
+						<input
+							formControlName="imdb_score"
+							id="imdb_score"
+							nbInput
+							fullWidth
+							status="basic"
+							placeholder="Imdb Score"
+							type="number">
+					</div>
+					<!-- E: IMDB_SCORE Input -->
+				</div>
+
+				<div class="row">
+					<!-- Country Input -->
+					<div class="col-md-4 col-sm-12">
+						<label for="country">Country</label>
+						<input
+							formControlName="country"
+							id="country"
+							nbInput
+							fullWidth
+							status="basic"
+							placeholder="Country"
+							type="text">
+					</div>
+					<!-- E:Country Input -->
+
+					<!-- Country Input -->
+					<div class="col-md-4 col-sm-12">
+						<label for="year">Year</label>
+						<input
+							formControlName="year"
+							id="year"
+							nbInput
+							fullWidth
+							status="basic"
+							placeholder="Year"
+							type="number">
+					</div>
+					<!-- E:Country Input -->
+				</div>
+			</nb-card-body>
+		</nb-card>
+	</div>
+</div>
