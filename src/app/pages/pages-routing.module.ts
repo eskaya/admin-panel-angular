@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule }             from '@angular/core';
 import { AdminComponent }       from './admin/admin.component';
 import { AuthComponent }        from './auth/auth.component';
+import { MovieListComponent }   from './movie-list/movie-list.component';
 import { MovieComponent }       from './movie/movie.component';
 
 import { PagesComponent }     from './pages.component';
@@ -41,6 +42,10 @@ const routes: Routes = [ {
         {
             path     : 'movie/:id',
             component: MovieComponent,
+        },
+        {
+            path     : 'movie-list',
+            component: MovieListComponent,
         },
         {
             path        : 'layout',

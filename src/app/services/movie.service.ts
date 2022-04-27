@@ -14,10 +14,10 @@ export class MovieService {
     constructor(private http: HttpClient) { }
     
     // Get All Movies
-    public getAllMovies(): Observable<HttpInterface<MovieInterface[]>> {
+    public getAllMovies(params: any = {}): Observable<MovieInterface[]> {
         return this.http
-            .get<HttpInterface<MovieInterface[]>>(getEndpoint('api/movie'),
-                { observe: 'body' },
+            .get<MovieInterface[]>(getEndpoint('api/movie'),
+                { observe: 'body' , params: params},
             )
             .pipe(
                 retry(1),

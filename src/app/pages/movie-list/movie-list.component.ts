@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }           from '@angular/core';
+import { HttpInterface, ITreeGridRow } from '../../../interfaces/http.interface';
+import { MovieInterface }              from '../../../interfaces/movie.interface';
+import { MovieService }                from '../../services/movie.service';
 
 @Component({
     selector   : 'ngx-movie-list',
@@ -7,10 +10,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieListComponent implements OnInit {
     
-    constructor() { }
+    public isLoad: boolean = false;
+    public movies: ITreeGridRow<MovieInterface>[] = [];
+    public allColumns = [ 'title', 'category', 'directory', 'imdb_score', 'year', 'action' ];
+    
+    // pagination
+    public limit: number = 20;
+    public totalRecordsCount: number = 0;
+    
+    constructor(
+        private movieService: MovieService,
+    ) { }
     
     ngOnInit(): void {
-        console.log('test');
+        this.fnLoadMovieList();
     }
+    
+    // TODO: Backendden datayı data:[] içerisinde gönderildiği zamana
+    //  <HttpInterface<MovieInterface>> olarak fnLoadMovieList fonksiyonunu güncelle. Yoksa hata alırsın.
+    public fnLoadMovieList(page: number = 1) {
+        
+        this.isLoad = false;
+        const params = this.fnGetPaginationParams(page);
+        this.movieService.getAllMovies(params).subscribe(
+            (response: MovieInterface[]) => {
+                this.isLoad = true;
+                this.movies = response.map<ITreeGridRow<MovieInterface>>(
+                    (item) => ({ data: item }),
+                );
+               // this.totalRecordsCount = response.meta.pagination?.total || 0;
+            },
+        );
+    }
+    
+    // if you have pagination
+    public fnGetPaginationParams(page: number): any {
+        const params: any = {
+            page : page - 1,
+            limit: this.limit,
+        };
+        return params;
+    }
+    
     
 }

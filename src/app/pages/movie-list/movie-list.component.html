@@ -1,1 +1,71 @@
-<p>movie-list works!</p>
+<div class="row">
+	<div class="col-md-12">
+		<nb-card>
+			<nb-card-header>
+				<span>Movie List</span>
+				<button
+					routerLink="/pages/movie"
+					nbButton
+					status="primary">
+					Create New Movie
+				</button>
+			</nb-card-header>
+			<nb-card-body>
+				<table [nbTreeGrid]="movies">
+
+					<tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+					<tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+					<ng-container nbTreeGridColumnDef="title">
+						<th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Title</th>
+						<td nbTreeGridCell *nbTreeGridCellDef="let row">
+							{{row.data.title}}
+						</td>
+					</ng-container>
+
+					<ng-container nbTreeGridColumnDef="category">
+						<th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Category</th>
+						<td nbTreeGridCell *nbTreeGridCellDef="let row">
+							{{row.data.category}}
+						</td>
+					</ng-container>
+
+					<ng-container nbTreeGridColumnDef="directory">
+						<th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Directory</th>
+						<td nbTreeGridCell *nbTreeGridCellDef="let row">
+							<span *ngIf="row.data.directory._id; else other_content">
+							{{row.data.directory.name}} {{row.data.directory.surname}}
+							</span>
+							<ng-template #other_content>Not found directory.</ng-template>
+						</td>
+					</ng-container>
+
+					<ng-container nbTreeGridColumnDef="imdb_score">
+						<th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Imdb Score</th>
+						<td nbTreeGridCell *nbTreeGridCellDef="let row">
+							{{row.data.imdb_score}}
+						</td>
+					</ng-container>
+
+					<ng-container nbTreeGridColumnDef="year">
+						<th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Year</th>
+						<td nbTreeGridCell *nbTreeGridCellDef="let row">
+							{{row.data.year}}
+						</td>
+					</ng-container>
+
+					<ng-container nbTreeGridColumnDef="action">
+						<th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Imdb Score</th>
+						<td nbTreeGridCell *nbTreeGridCellDef="let row">
+							<button
+							nbButton>
+								<nb-icon icon="star"></nb-icon>
+							</button>
+						</td>
+					</ng-container>
+
+				</table>
+			</nb-card-body>
+		</nb-card>
+	</div>
+</div>

@@ -7,8 +7,8 @@ import {
     NbFormFieldModule,
     NbIconModule,
     NbButtonModule,
-    NbSelectModule,
-}                              from '@nebular/theme';
+    NbSelectModule, NbTreeGridModule,
+} from '@nebular/theme';
 
 import { ThemeModule }         from '../@theme/theme.module';
 import { PagesComponent }      from './pages.component';
@@ -22,7 +22,7 @@ import { MovieComponent }      from './movie/movie.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 
 @NgModule({
-    imports     : [
+    imports: [
         PagesRoutingModule,
         ThemeModule,
         NbMenuModule,
@@ -36,6 +36,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
         NbButtonModule,
         ReactiveFormsModule,
         NbSelectModule,
+        NbTreeGridModule,
     ],
     declarations: [
         PagesComponent,

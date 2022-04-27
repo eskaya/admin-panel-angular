@@ -1,4 +1,8 @@
 export interface HttpInterface<T> {
-    body: T;
+    data: T;
     meta: any;
+}
+
+export interface ITreeGridRow<T> {
+    data: T;
 }
