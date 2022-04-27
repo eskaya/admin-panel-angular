@@ -3,8 +3,8 @@ import { Injectable }                         from '@angular/core';
 import { Observable, throwError, observable } from 'rxjs';
 import { retry, catchError }                  from 'rxjs/operators';
 import { getEndpoint }                        from '../../environments/environment';
-import { HttpInterface }                      from '../../interfaces/http.interface';
-import { MovieInterface }                     from '../../interfaces/movie.interface';
+import { HttpInterface }                          from '../../interfaces/http.interface';
+import { MovieInterface, MovieResponseInterface } from '../../interfaces/movie.interface';
 
 @Injectable({
     providedIn: 'root',
@@ -14,9 +14,9 @@ export class MovieService {
     constructor(private http: HttpClient) { }
     
     // Get All Movies
-    public getAllMovies(params: any = {}): Observable<MovieInterface[]> {
+    public getAllMovies(params: any = {}): Observable<MovieResponseInterface[]> {
         return this.http
-            .get<MovieInterface[]>(getEndpoint('api/movie'),
+            .get<MovieResponseInterface[]>(getEndpoint('api/movie'),
                 { observe: 'body' , params: params},
             )
             .pipe(

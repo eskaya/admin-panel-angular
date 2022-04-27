@@ -33,8 +33,8 @@
 					<ng-container nbTreeGridColumnDef="directory">
 						<th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Directory</th>
 						<td nbTreeGridCell *nbTreeGridCellDef="let row">
-							<span *ngIf="row.data.directory._id; else other_content">
-							{{row.data.directory.name}} {{row.data.directory.surname}}
+							<span *ngIf="row.data.director ; else other_content">
+							{{row.data.director.name}} {{row.data.director.surname}}
 							</span>
 							<ng-template #other_content>Not found directory.</ng-template>
 						</td>
@@ -58,8 +58,17 @@
 						<th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Imdb Score</th>
 						<td nbTreeGridCell *nbTreeGridCellDef="let row">
 							<button
-							nbButton>
-								<nb-icon icon="star"></nb-icon>
+							nbButton
+							status="warning"
+							class="mr-2"
+							>
+								<nb-icon icon="edit-2-outline"></nb-icon>
+							</button>
+							<button
+								nbButton
+								status="danger"
+							>
+								<nb-icon icon="trash-2-outline"></nb-icon>
 							</button>
 						</td>
 					</ng-container>

@@ -1,7 +1,7 @@
 import { Component, OnInit }           from '@angular/core';
-import { HttpInterface, ITreeGridRow } from '../../../interfaces/http.interface';
-import { MovieInterface }              from '../../../interfaces/movie.interface';
-import { MovieService }                from '../../services/movie.service';
+import { HttpInterface, ITreeGridRow }            from '../../../interfaces/http.interface';
+import { MovieInterface, MovieResponseInterface } from '../../../interfaces/movie.interface';
+import { MovieService }                           from '../../services/movie.service';
 
 @Component({
     selector   : 'ngx-movie-list',
@@ -11,7 +11,7 @@ import { MovieService }                from '../../services/movie.service';
 export class MovieListComponent implements OnInit {
     
     public isLoad: boolean = false;
-    public movies: ITreeGridRow<MovieInterface>[] = [];
+    public movies: ITreeGridRow<MovieResponseInterface>[] = [];
     public allColumns = [ 'title', 'category', 'directory', 'imdb_score', 'year', 'action' ];
     
     // pagination
@@ -27,15 +27,15 @@ export class MovieListComponent implements OnInit {
     }
     
     // TODO: Backendden datayı data:[] içerisinde gönderildiği zamana
-    //  <HttpInterface<MovieInterface>> olarak fnLoadMovieList fonksiyonunu güncelle. Yoksa hata alırsın.
+    //  <HttpInterface<MovieResponseInterface>> olarak fnLoadMovieList fonksiyonunu güncelle. Yoksa hata alırsın.
     public fnLoadMovieList(page: number = 1) {
         
         this.isLoad = false;
         const params = this.fnGetPaginationParams(page);
         this.movieService.getAllMovies(params).subscribe(
-            (response: MovieInterface[]) => {
+            (response: MovieResponseInterface[]) => {
                 this.isLoad = true;
-                this.movies = response.map<ITreeGridRow<MovieInterface>>(
+                this.movies = response.map<ITreeGridRow<MovieResponseInterface>>(
                     (item) => ({ data: item }),
                 );
                // this.totalRecordsCount = response.meta.pagination?.total || 0;
