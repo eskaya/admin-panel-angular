@@ -13,6 +13,18 @@ export class MovieService {
     
     constructor(private http: HttpClient) { }
     
+    // Get All Movies
+    public getAllMovies(): Observable<HttpInterface<MovieInterface[]>> {
+        return this.http
+            .get<HttpInterface<MovieInterface[]>>(getEndpoint('api/movie'),
+                { observe: 'body' },
+            )
+            .pipe(
+                retry(1),
+                catchError((error: HttpErrorResponse) => throwError(error.error)),
+            );
+    }
+    
     // Create Movie
     public create(form: MovieInterface): Observable<HttpInterface<MovieInterface>> {
         return this.http

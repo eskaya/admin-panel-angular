@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a1f39d5-69dc-43e0-9094-e020df04cfd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/utils/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/movie/movie.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/movie/movie.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/pages.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/pages.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/movie.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/movie.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +84,7 @@
       <workItem from="1650878859159" duration="4179000" />
       <workItem from="1651043436743" duration="619000" />
       <workItem from="1651044521818" duration="112000" />
-      <workItem from="1651044813559" duration="656000" />
+      <workItem from="1651044813559" duration="1125000" />
     </task>
     <servers />
   </component>
