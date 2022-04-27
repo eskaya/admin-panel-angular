@@ -19,6 +19,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { AuthComponent }       from './auth/auth.component';
 import { AdminComponent }      from './admin/admin.component';
 import { MovieComponent }      from './movie/movie.component';
+import { MovieListComponent } from './movie-list/movie-list.component';
 
 @NgModule({
     imports     : [
@@ -41,6 +42,7 @@ import { MovieComponent }      from './movie/movie.component';
         AuthComponent,
         AdminComponent,
         MovieComponent,
+        MovieListComponent,
     ],
 })
 export class PagesModule {

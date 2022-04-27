@@ -58,7 +58,7 @@ export class MovieComponent implements OnInit {
     
     public clickSubmitButton() {
         const formValue = this.movieForm.value;
-        if(formValue._id) {
+        if (formValue._id) {
             this.fnUpdateMovie(formValue);
         } else {
             this.fnCreateMovie(formValue);
