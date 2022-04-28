@@ -26,7 +26,7 @@ export class MovieListComponent implements OnInit {
         this.fnLoadMovieList();
     }
     
-    // TODO: Backendden datayı data:[] içerisinde gönderildiği zamana
+    // TODO: Backendden datayı data:[] içerisinde gönderildiği zaman
     //  <HttpInterface<MovieResponseInterface>> olarak fnLoadMovieList fonksiyonunu güncelle. Yoksa hata alırsın.
     public fnLoadMovieList(page: number = 1) {
         

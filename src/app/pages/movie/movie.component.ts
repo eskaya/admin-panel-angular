@@ -29,7 +29,10 @@ export class MovieComponent implements OnInit {
             if (params.id) {
                 this.movieService.get(params.id).subscribe((res) => {
                     this._id = params.id;
-                    this.movieForm.patchValue(res);
+                    if (res[0].director_id) {
+                        res[0].director_id = res[0].director.name + ' ' + res[0].director.surname;
+                    }
+                    this.movieForm.patchValue(res[0]);
                     this.movieForm.markAsPristine();
                 });
             }

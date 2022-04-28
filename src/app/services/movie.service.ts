@@ -50,9 +50,9 @@ export class MovieService {
     }
     
     // Movie Detail
-    public get(_id: string, params: any = {}): Observable<HttpInterface<MovieInterface>> {
+    public get(_id: string, params: any = {}): Observable<MovieInterface> {
         return this.http
-            .get<HttpInterface<MovieInterface>>(getEndpoint('api/movie/detail/') + _id,
+            .get<MovieInterface>(getEndpoint('api/movie/detail/') + _id,
                 { observe: 'body' },
                 // if you have param -->     { observe: 'body', params: params.params }
             )

@@ -55,12 +55,13 @@
 					</ng-container>
 
 					<ng-container nbTreeGridColumnDef="action">
-						<th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Imdb Score</th>
+						<th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Actions</th>
 						<td nbTreeGridCell *nbTreeGridCellDef="let row">
 							<button
 							nbButton
 							status="warning"
 							class="mr-2"
+							[routerLink]="['/pages/movie/', row.data._id]"
 							>
 								<nb-icon icon="edit-2-outline"></nb-icon>
 							</button>
