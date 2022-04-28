@@ -26,9 +26,9 @@ export class MovieService {
     }
     
     // Create Movie
-    public create(form: MovieInterface): Observable<HttpInterface<MovieInterface>> {
+    public create(form: MovieInterface): Observable<MovieInterface> {
         return this.http
-            .post<HttpInterface<MovieInterface>>(getEndpoint('api/movie'), form,
+            .post<MovieInterface>(getEndpoint('api/movie'), form,
                 { observe: 'body' },
             )
             .pipe(
@@ -38,9 +38,9 @@ export class MovieService {
     }
     
     // Update Movie
-    public update(form: MovieInterface, _id: string): Observable<HttpInterface<MovieInterface>> {
+    public update(form: MovieInterface, _id: string): Observable<MovieInterface> {
         return this.http
-            .patch<HttpInterface<MovieInterface>>(getEndpoint('api/movie/update/') + _id, form,
+            .patch<MovieInterface>(getEndpoint('api/movie/update/') + _id, form,
                 { observe: 'body' },
             )
             .pipe(
@@ -55,6 +55,19 @@ export class MovieService {
             .get<MovieInterface>(getEndpoint('api/movie/detail/') + _id,
                 { observe: 'body' },
                 // if you have param -->     { observe: 'body', params: params.params }
+            )
+            .pipe(
+                retry(1),
+                catchError((error: HttpErrorResponse) => throwError(error.error)),
+            );
+    }
+    
+    // Delete movie
+    // data --> data ve meta olarak geliyorsa <HttpInterface<MovieInterfce>> olarak kullanman gerektiğini unutma
+    public delete(_id: string): Observable<MovieInterface> {
+        return this.http
+            .delete<MovieInterface>(getEndpoint('api/movie/delete/') + _id,
+                { observe: 'body' },
             )
             .pipe(
                 retry(1),

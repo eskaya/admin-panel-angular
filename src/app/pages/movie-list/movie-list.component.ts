@@ -1,4 +1,6 @@
-import { Component, OnInit }           from '@angular/core';
+import { HttpErrorResponse }                      from '@angular/common/http';
+import { Component, OnInit, TemplateRef }         from '@angular/core';
+import { NbToastrService, NbDialogService }       from '@nebular/theme';
 import { HttpInterface, ITreeGridRow }            from '../../../interfaces/http.interface';
 import { MovieInterface, MovieResponseInterface } from '../../../interfaces/movie.interface';
 import { MovieService }                           from '../../services/movie.service';
@@ -20,6 +22,8 @@ export class MovieListComponent implements OnInit {
     
     constructor(
         private movieService: MovieService,
+        private toastrService: NbToastrService,
+        private dialogService: NbDialogService,
     ) { }
     
     ngOnInit(): void {
@@ -38,7 +42,7 @@ export class MovieListComponent implements OnInit {
                 this.movies = response.map<ITreeGridRow<MovieResponseInterface>>(
                     (item) => ({ data: item }),
                 );
-               // this.totalRecordsCount = response.meta.pagination?.total || 0;
+                // this.totalRecordsCount = response.meta.pagination?.total || 0;
             },
         );
     }
@@ -52,5 +56,25 @@ export class MovieListComponent implements OnInit {
         return params;
     }
     
+    
+    public fnOpenDialog(dialog: TemplateRef<any>, id) {
+        this.dialogService.open(dialog, {
+            context: {
+                message: 'Are you sure you want to delete the product?',
+                id,
+            },
+        });
+    }
+    
+    public fnDeleteItem(_id) {
+        this.movieService.delete(_id).subscribe((res) => {
+                this.toastrService.success('Deletion successful');
+                this.fnLoadMovieList();
+            },
+            (httpError: HttpErrorResponse) => {
+                const { error } = httpError;
+                this.toastrService.danger(error.message);
+            });
+    }
     
 }

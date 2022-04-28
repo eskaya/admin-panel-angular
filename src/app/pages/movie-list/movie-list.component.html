@@ -68,6 +68,7 @@
 							<button
 								nbButton
 								status="danger"
+								(click)="fnOpenDialog(deleteDialog, row.data._id)"
 							>
 								<nb-icon icon="trash-2-outline"></nb-icon>
 							</button>
@@ -79,3 +80,22 @@
 		</nb-card>
 	</div>
 </div>
+
+<ng-template #deleteDialog let-data let-ref="dialogRef">
+	<nb-card>
+		<nb-card-header>
+			Product will be deleted
+		</nb-card-header>
+		<nb-card-body>{{ data.message }}</nb-card-body>
+		<nb-card-footer>
+			<button
+				nbButton
+				class="mr-2"
+				status="danger"
+				(click)="ref.close(); fnDeleteItem(data.id)">
+				Delete
+			</button>
+		</nb-card-footer>
+	</nb-card>
+</ng-template>
+
